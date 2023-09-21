@@ -1,5 +1,5 @@
 import "./categories.styles.scss";
-import Category from "./components/category-item/category-items.component";
+import Directory from "./components/directory/directory.component";
 
 const App = () => {
   const categories = [
@@ -29,7 +29,7 @@ const App = () => {
       imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
     },
   ];
-  return <Category categories={categories} />;
+  return <Directory categories={categories} />;
 };
 
 export default App;
