@@ -1,5 +1,5 @@
 import "./facebook-btn.styles.scss";
-import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
+import { signInWithGooglePopup } from "../../../utils/firebase/firebase.utils";
 
 const FbButton = () => {
   const logGoogleUser = async () => {
@@ -7,7 +7,7 @@ const FbButton = () => {
     console.log(response);
   };
   return (
-    <button onClick={logGoogleUser}>
+    <button className="fb-button" onClick={logGoogleUser}>
       <svg
         viewBox="0 0 16 16"
         className="bi bi-facebook"
