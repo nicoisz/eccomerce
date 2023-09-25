@@ -1,10 +1,13 @@
 import "./google-btn.styles.scss";
-import { signInWithGooglePopup } from "../../../utils/firebase/firebase.utils";
+import {
+  createUserDocumentFromAuth,
+  signInWithGooglePopup,
+} from "../../../utils/firebase/firebase.utils";
 
 const GoogleButton = () => {
   const logGoogleUser = async () => {
-    const response = await signInWithGooglePopup();
-    console.log(response);
+    const { user } = await signInWithGooglePopup();
+    const userDocRef = await createUserDocumentFromAuth(user);
   };
   return (
     <button className="google-button" onClick={logGoogleUser}>
