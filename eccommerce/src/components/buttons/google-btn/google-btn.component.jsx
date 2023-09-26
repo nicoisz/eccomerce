@@ -1,16 +1,32 @@
 import "./google-btn.styles.scss";
 import {
+  auth,
   createUserDocumentFromAuth,
   signInWithGooglePopup,
+  signInWithGoogleRedirect,
 } from "../../../utils/firebase/firebase.utils";
 
+import { useEffect } from "react";
+import { getRedirectResult, signInWithRedirect } from "firebase/auth";
+
 const GoogleButton = () => {
+  useEffect(() => {
+    const getResponse = async () => {
+      const response = await getRedirectResult(auth);
+      if (response) {
+        const userDocRef = await createUserDocumentFromAuth(response.user);
+      }
+    };
+    getResponse().catch(console.error);
+  }, []);
+
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
     const userDocRef = await createUserDocumentFromAuth(user);
   };
+
   return (
-    <button className="google-button" onClick={logGoogleUser}>
+    <button className="google-button" onClick={signInWithGoogleRedirect}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
