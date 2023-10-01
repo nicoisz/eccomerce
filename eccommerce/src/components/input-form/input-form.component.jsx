@@ -1,17 +1,9 @@
 import "./input-form.styles.scss";
 
-const Inputform = (props) => {
-  const { type, placeholder, label, onChangeHandler, name } = props;
-  console.log("Inputform", type);
+const Inputform = ({ label, ...otherProps }) => {
   return (
     <div className="input-container">
-      <input
-        placeholder={placeholder}
-        onChange={onChangeHandler}
-        className="input-field"
-        type={type}
-        name={name}
-      />
+      <input className="input-field" {...otherProps} />
       <label htmlFor="input-field" className="input-label">
         {label}
       </label>

@@ -21,12 +21,16 @@ const GoogleButton = () => {
   }, []);
 
   const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(user);
+    try {
+      const { user } = await signInWithGooglePopup();
+      const userDocRef = await createUserDocumentFromAuth(user);
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
-    <button className="google-button" onClick={signInWithGoogleRedirect}>
+    <button className="google-button" onClick={logGoogleUser}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         x="0px"

@@ -1,6 +1,13 @@
 import FormButton from "../buttons/form-button/form-btn.component";
 import Inputform from "../input-form/input-form.component";
 import { useState } from "react";
+import {
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase/firebase.utils";
+import "./sign-up-form.styles.scss";
+import FbButton from "../../components/buttons/facebook-btn/facebook-btn.component";
+import GoogleBtn from "../../components/buttons/google-btn/google-btn.component";
 
 const defaultFormFields = {
   displayName: "",
@@ -13,47 +20,85 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
+  const resetFormFields = () => {
+    console.log("reset form fields");
+    setFormFields(defaultFormFields);
+  };
   console.log(formFields);
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert("password do not match");
+    }
+    try {
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      await createUserDocumentFromAuth(user, { displayName });
+
+      resetFormFields();
+    } catch (e) {
+      if (e.code === "auth/email-already-in-use") {
+        alert("email already in use");
+      }
+    }
+  };
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
 
   return (
-    <div>
-      <h1>Sign Up with your email and password</h1>
-      <form onSubmit={() => {}}>
+    <div className="sign-up-container">
+      <h2>Don't have an account?</h2>
+      <span>Sign Up with your email and password</span>
+      <form onSubmit={handleSubmit}>
         <Inputform
+          label={"Name"}
           type={"text"}
           placeholder={"enter your name "}
-          label={"Name"}
           name={"displayName"}
-          onChangeHandler={handleChange}
+          value={displayName}
+          onChange={handleChange}
+          required={true}
         ></Inputform>
         <Inputform
+          label={"Email"}
           type={"mail"}
           placeholder={"enter your email"}
-          label={"Email"}
+          value={email}
           name={"email"}
-          onChangeHandler={handleChange}
+          onChange={handleChange}
+          required={true}
         ></Inputform>
         <Inputform
+          label={"Password"}
           type={"password"}
           placeholder={"enter your password"}
-          label={"Password"}
+          value={password}
           name={"password"}
-          onChangeHandler={handleChange}
+          onChange={handleChange}
+          required={true}
         ></Inputform>
         <Inputform
+          label={"Confirm Password"}
           type={"password"}
           placeholder={"enter your password again"}
-          label={"Confirm Password"}
+          value={confirmPassword}
           name={"confirmPassword"}
-          onChangeHandler={handleChange}
+          onChange={handleChange}
+          required={true}
         ></Inputform>
-        <FormButton></FormButton>
+        <FormButton buttonType="default" textButton={"Sign Up"}></FormButton>
       </form>
+
+      <hr />
+      <GoogleBtn></GoogleBtn>
+      <FbButton></FbButton>
     </div>
   );
 };
