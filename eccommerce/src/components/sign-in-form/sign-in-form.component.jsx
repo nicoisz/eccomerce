@@ -5,7 +5,8 @@ import {
 import FormButton from "../buttons/form-button/form-btn.component";
 import Inputform from "../input-form/input-form.component";
 import "./sign-in-form.styles.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../context/user.context";
 
 const defaultFormFields = {
   email: "",
@@ -15,6 +16,7 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     console.log("reset form fields");
@@ -26,8 +28,9 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthWithEmailAndPassword(email, password);
-      console.log(response, email, password);
+      const { user } = await signInAuthWithEmailAndPassword(email, password);
+      setCurrentUser(user);
+      //console.log(response, email, password);
       resetFormFields();
     } catch (e) {
       if (e.message === "Firebase: Error (auth/invalid-login-credentials).") {
