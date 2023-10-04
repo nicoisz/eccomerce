@@ -30,7 +30,11 @@ const SignInForm = () => {
       console.log(response, email, password);
       resetFormFields();
     } catch (e) {
-      console.log(e.message);
+      if (e.message === "Firebase: Error (auth/invalid-login-credentials).") {
+        alert(e.message);
+      } else {
+        console.log("error", e.message);
+      }
     }
   };
   const handleChange = (event) => {

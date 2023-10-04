@@ -1,8 +1,17 @@
-.form-page {
+.authentication-container {
   display: flex;
+  width: 800px;
   justify-content: center;
   //background-color: #bbdefb;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin: 30px auto;
   height: 100%;
   padding: 15px;
-  gap: 1px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
 }

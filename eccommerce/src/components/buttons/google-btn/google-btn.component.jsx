@@ -25,12 +25,12 @@ const GoogleButton = () => {
       const { user } = await signInWithGooglePopup();
       const userDocRef = await createUserDocumentFromAuth(user);
     } catch (error) {
-      alert(error.message);
+      console.log(error.message);
     }
   };
 
   return (
-    <button className="google-button" onClick={logGoogleUser}>
+    <button type="button" className="google-button" onClick={logGoogleUser}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         x="0px"

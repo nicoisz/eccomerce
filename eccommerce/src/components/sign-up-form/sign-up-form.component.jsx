@@ -6,8 +6,6 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import "./sign-up-form.styles.scss";
-import FbButton from "../../components/buttons/facebook-btn/facebook-btn.component";
-import GoogleBtn from "../../components/buttons/google-btn/google-btn.component";
 
 const defaultFormFields = {
   displayName: "",
@@ -95,10 +93,6 @@ const SignUpForm = () => {
         ></Inputform>
         <FormButton buttonType="default" textButton={"Sign Up"}></FormButton>
       </form>
-
-      <hr />
-      <GoogleBtn></GoogleBtn>
-      <FbButton></FbButton>
     </div>
   );
 };

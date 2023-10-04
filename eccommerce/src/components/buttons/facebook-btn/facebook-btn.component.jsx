@@ -7,7 +7,7 @@ const FbButton = () => {
     console.log(response);
   };
   return (
-    <button className="fb-button" onClick={logGoogleUser}>
+    <button type="button" className="fb-button" onClick={logGoogleUser}>
       <svg
         viewBox="0 0 16 16"
         className="bi bi-facebook"
