@@ -19,10 +19,10 @@ const SignInForm = () => {
   const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
-    console.log("reset form fields");
+    // console.log("reset form fields");
     setFormFields(defaultFormFields);
   };
-  console.log(formFields);
+  // console.log(formFields);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
