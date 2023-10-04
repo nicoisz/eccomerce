@@ -42,30 +42,27 @@ const SignInForm = () => {
     <div className="sign-in-container">
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
-      <Inputform
-        type={"text"}
-        label={"username"}
-        placeholder={"enter user name"}
-        required={true}
-        name={"email"}
-        value={email}
-        onChange={handleChange}
-      ></Inputform>
-      <Inputform
-        type={"password"}
-        label={"password"}
-        placeholder={"enter password"}
-        required={true}
-        name={"password"}
-        value={password}
-        onChange={handleChange}
-      ></Inputform>
-      <FormButton
-        textButton={"Sign In"}
-        buttonType="inverted"
-        type="submit"
-        onClick={handleSubmit}
-      ></FormButton>
+      <form onSubmit={handleSubmit}>
+        <Inputform
+          type={"text"}
+          label={"username"}
+          placeholder={"enter user name"}
+          required={true}
+          name={"email"}
+          value={email}
+          onChange={handleChange}
+        ></Inputform>
+        <Inputform
+          type={"password"}
+          label={"password"}
+          placeholder={"enter password"}
+          required={true}
+          name={"password"}
+          value={password}
+          onChange={handleChange}
+        ></Inputform>
+        <FormButton textButton={"Sign In"} buttonType="inverted"></FormButton>
+      </form>
     </div>
   );
 };
