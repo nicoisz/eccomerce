@@ -1,4 +1,4 @@
-import FormButton from "../buttons/form-button/form-btn.component";
+import Button from "../buttons/button/button.component";
 import Inputform from "../input-form/input-form.component";
 import { useState } from "react";
 import {
@@ -90,7 +90,7 @@ const SignUpForm = () => {
           onChange={handleChange}
           required={true}
         ></Inputform>
-        <FormButton buttonType="default" textButton={"Sign Up"}></FormButton>
+        <Button buttonType="default" textButton={"Sign Up"}></Button>
       </form>
     </div>
   );

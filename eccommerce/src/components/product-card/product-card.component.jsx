@@ -1,5 +1,5 @@
 import "./product-card.styles.scss";
-import Button from "../../components/buttons/form-button/form-btn.component";
+import Button from "../buttons/button/button.component";
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl, id } = product;
   return (

@@ -2,7 +2,7 @@ import {
   auth,
   signInAuthWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
-import FormButton from "../buttons/form-button/form-btn.component";
+import Button from "../buttons/button/button.component";
 import Inputform from "../input-form/input-form.component";
 import "./sign-in-form.styles.scss";
 import { useState } from "react";
@@ -66,7 +66,7 @@ const SignInForm = () => {
           value={password}
           onChange={handleChange}
         ></Inputform>
-        <FormButton textButton={"Sign In"} buttonType="inverted"></FormButton>
+        <Button textButton={"Sign In"} buttonType="inverted"></Button>
       </form>
     </div>
   );

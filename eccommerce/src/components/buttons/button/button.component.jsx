@@ -1,10 +1,10 @@
-import "./form-btn.styles.scss";
+import "./button.styles.scss";
 
 const BUTTON_TYPE_CLASSES = {
   inverted: "inverted",
   default: "default",
 };
-const FormButton = (props) => {
+const Button = (props) => {
   const { textButton, buttonType, ...otherProps } = props;
   return (
     <button
@@ -16,4 +16,4 @@ const FormButton = (props) => {
   );
 };
 
-export default FormButton;
+export default Button;
