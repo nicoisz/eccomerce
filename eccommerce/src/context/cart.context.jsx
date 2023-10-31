@@ -40,7 +40,11 @@ export const CartContext = createContext({
   cartCount: 0,
   setCartCount: () => {},
   decreaseCartItem: () => {},
+  clearItemFromCart: () => {},
 });
+
+const clearCartItem = (cartItems, cartItemToClear) =>
+  cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -61,6 +65,10 @@ export const CartProvider = ({ children }) => {
   const decreaseItemToCart = (product) =>
     setCartItems(decreaseCartItem(cartItems, product));
 
+  const clearItemFromCart = (cartItemToClear) => {
+    setCartItems(clearCartItem(cartItems, cartItemToClear));
+  };
+
   const value = {
     isCartOpen,
     setIsCartOpen,
@@ -68,6 +76,7 @@ export const CartProvider = ({ children }) => {
     addItemToCart,
     cartCount,
     setCartItems,
+    clearItemFromCart,
     decreaseItemToCart,
   };
 
