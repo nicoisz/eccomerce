@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useEffect } from "react";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import "./navigation.styles.scss";
 import CartIcon from "../cart-icon/cart-icon.component";
@@ -7,9 +7,20 @@ import CartDropDown from "../cart-drop-down/cart-dropdown.component";
 import { UserContext } from "../../context/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { CartContext } from "../../context/cart.context";
+import { useNavigate } from "react-router-dom";
+
 const Navigation = () => {
+  const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
   const { isCartOpen } = useContext(CartContext);
+
+  console.log("currentUser", currentUser);
+
+  useEffect(() => {
+    if (currentUser === null) {
+      navigate("/auth");
+    }
+  }, [currentUser]);
 
   return (
     <Fragment>

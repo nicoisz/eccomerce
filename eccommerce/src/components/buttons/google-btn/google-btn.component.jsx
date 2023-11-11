@@ -9,7 +9,10 @@ import {
 import { useEffect } from "react";
 import { getRedirectResult, signInWithRedirect } from "firebase/auth";
 
+import { useNavigate } from "react-router-dom";
+
 const GoogleButton = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     const getResponse = async () => {
       const response = await getRedirectResult(auth);
@@ -22,7 +25,10 @@ const GoogleButton = () => {
 
   const logGoogleUser = async () => {
     try {
-      await signInWithGooglePopup();
+      const result = await signInWithGooglePopup();
+      if (result) {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -30,14 +36,7 @@ const GoogleButton = () => {
 
   return (
     <button type="button" className="google-button" onClick={logGoogleUser}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        x="0px"
-        y="0px"
-        width="100"
-        height="100"
-        viewBox="0 0 48 48"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
         <path
           fill="#FFC107"
           d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
