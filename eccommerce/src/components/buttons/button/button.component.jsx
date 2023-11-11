@@ -7,7 +7,6 @@ const BUTTON_TYPE_CLASSES = {
 };
 const Button = (props) => {
   const { textButton, buttonType, path, ...otherProps } = props;
-  console.log("nico", props);
   return (
     <button
       className={`form-button ${BUTTON_TYPE_CLASSES[buttonType]}`}

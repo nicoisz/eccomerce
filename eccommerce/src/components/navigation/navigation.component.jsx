@@ -14,8 +14,6 @@ const Navigation = () => {
   const { currentUser } = useContext(UserContext);
   const { isCartOpen } = useContext(CartContext);
 
-  console.log("currentUser", currentUser);
-
   useEffect(() => {
     if (currentUser === null) {
       navigate("/auth");

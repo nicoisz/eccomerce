@@ -1,7 +1,4 @@
-import {
-  auth,
-  signInAuthWithEmailAndPassword,
-} from "../../utils/firebase/firebase.utils";
+import { auth, signInAuthWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import Button from "../buttons/button/button.component";
 import Inputform from "../input-form/input-form.component";
 import "./sign-in-form.styles.scss";
@@ -28,7 +25,6 @@ const SignInForm = () => {
     try {
       const { user } = await signInAuthWithEmailAndPassword(email, password);
       //  setCurrentUser(user);
-      //console.log(response, email, password);
       resetFormFields();
     } catch (e) {
       if (e.message === "Firebase: Error (auth/invalid-login-credentials).") {

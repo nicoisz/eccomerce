@@ -4,7 +4,6 @@ import { signInWithGooglePopup } from "../../../utils/firebase/firebase.utils";
 const FbButton = () => {
   const logGoogleUser = async () => {
     const response = await signInWithGooglePopup();
-    //console.log(response);
   };
   return (
     <button type="button" className="fb-button" onClick={logGoogleUser}>
