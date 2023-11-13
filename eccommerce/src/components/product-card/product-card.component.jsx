@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
   const addProductToCart = () => addItemToCart(product);
   return (
     <div className="product-card-container" key={id}>
-      <img alt={`${name}`} src={imageUrl} />
+      <img className="background-image" alt={`${name}`} src={imageUrl} />
       <div className="footer">
         <span className="'name">{name}</span>
         <span className="price">{price}</span>
